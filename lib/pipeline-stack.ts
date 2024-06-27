@@ -8,8 +8,8 @@ export class pipelineStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const githubOrg       = process.env.GITHUB_ORG       || "aws-6w8hnx";
-    const githubRepo      = process.env.GITHUB_REPO      || "aws-codepipeline-ecs-lambda";
+    const githubOrg       = process.env.GITHUB_ORG       || "sonal-aws";
+    const githubRepo      = process.env.GITHUB_REPO      || "cdk-tfc-pipeline";
     const githubBranch    = process.env.GITHUB_BRANCH    || "main";
     const devEnv          = process.env.DEV_ENV          || "dev";
 
@@ -20,7 +20,7 @@ export class pipelineStack extends cdk.Stack {
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.connection(`${githubOrg}/${githubRepo}`, `${githubBranch}`,{
           // You need to replace the below code connection arn:
-          connectionArn: `arn:aws:codestar-connections:us-east-1:947172243128:connection/897f66d5-6488-4c5d-9174-d271a0e766e0`
+          connectionArn: `arn:aws:codestar-connections:us-east-1:${props?.env?.account}:connection/897f66d5-6488-4c5d-9174-d271a0e766e0`
         }),
         commands: [
           'npm ci',
