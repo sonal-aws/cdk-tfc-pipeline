@@ -1,6 +1,6 @@
 # Welcome to your CDK TypeScript project
 
-This is a souce ocde for CDK codepipeline
+This repository hold the source code for a CDK codepipeline
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
