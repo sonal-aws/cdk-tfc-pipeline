@@ -1,0 +1,9 @@
+name: Hello World
+on: [push]
+jobs:
+  Hello-World-Job:
+    runs-on:
+      - codebuild-runner1-${{ github.run_id }}-${{ github.run_attempt }}
+      - image:custom-windows2022-397466294846.dkr.ecr.us-east-1.amazonaws.com/abc:ltsc2022
+    steps:
+      - run: echo "Hello World"
